@@ -14,7 +14,7 @@ const Landing = () => {
     <div className="bg-[#1E222C] min-h-screen pb-24 flex flex-col items-center">
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <LandingModal step={step} />
+          <LandingModal step={step} setStep={setStep} />
         </div>
       )}
       <div className="flex flex-col items-center mt-16">
