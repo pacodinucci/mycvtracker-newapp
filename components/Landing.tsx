@@ -17,7 +17,10 @@ const Landing = () => {
         {isModalOpen && (
           <div
             className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10"
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => {
+              setIsModalOpen(false);
+              setStep(1);
+            }}
           >
             <div onClick={(e) => e.stopPropagation()}>
               <LandingModal

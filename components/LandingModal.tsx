@@ -21,7 +21,10 @@ const LandingModal = ({ step, setStep, setIsModalOpen }: LandingModalProps) => {
       <div className="flex h-full w-full relative">
         <div
           className="absolute top-5 right-5 cursor-pointer"
-          onClick={() => setIsModalOpen(false)}
+          onClick={() => {
+            setIsModalOpen(false);
+            setStep(1);
+          }}
         >
           <X />
         </div>
