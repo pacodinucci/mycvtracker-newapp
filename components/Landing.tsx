@@ -5,6 +5,7 @@ import Image from "next/image";
 import { inter } from "@/lib/fonts";
 import { ArrowRight, CircleCheckBig } from "lucide-react";
 import LandingModal from "./LandingModal";
+import { AnimatePresence } from "framer-motion";
 
 const Landing = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,11 +13,22 @@ const Landing = () => {
 
   return (
     <div className="bg-[#1E222C] min-h-screen pb-24 flex flex-col items-center">
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <LandingModal step={step} setStep={setStep} />
-        </div>
-      )}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <div onClick={(e) => e.stopPropagation()}>
+              <LandingModal
+                step={step}
+                setStep={setStep}
+                setIsModalOpen={setIsModalOpen}
+              />
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
       <div className="flex flex-col items-center mt-16">
         <div className="bg-white w-[80%] py-4 px-8 text-center font-bold text-5xl text-neutral-800 rounded-tl-[2rem] rounded-br-[2rem]">
           <h1>Free CV Tracker</h1>
@@ -116,7 +128,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-        <div className="w-[520px] h-[716px] rounded-2xl relative bg-gradient-to-br from-[#80A4C1] from-10% to-[#1E6BC8] shadow-lg overflow-hidden p-8 flex flex-col justify-between">
+        <div className="w-[520px] h-[716px] rounded-2xl relative bg-gradient-to-br from-[#80A4C1] from-10% to-[#1E6BC8] shadow-lg overflow-hidden px-8 py-9 flex flex-col justify-between">
           <div>
             <div className="flex flex-col">
               <Image
